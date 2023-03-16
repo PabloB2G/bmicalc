@@ -9,13 +9,14 @@ import practica3.BMICalcImpl;
 public class StepDefinitions {
 	private BMICalcImpl b;
 	private double resBMI;
-	
+	private String resCateg;
 	private boolean error;
 
 	@Before
 	public void initialization() {
 		b = null;
 		resBMI = -1;
+		resCateg = null;
 		error = false;
 	}
 
@@ -46,13 +47,39 @@ public class StepDefinitions {
 			error = true;
 		}
 	}
+	
+	@When("Calculo la categoria de {double}")
+	public void calculo_la_categoria_de(Double double1) {
+		resCateg = b.category(double1);
+	}
+
+	@When("Calculo la categoria del BMI negativo {double}")
+	public void calculo_la_categoria_del_bmi_negativo(Double double1) {
+		try {
+			resCateg = b.category(double1);
+		} catch (ArithmeticException ex) {
+			error = true;
+		}
+	}
+	
+	@When("Calculo la categoria del BMI atipico {double}")
+	public void calculo_la_categoria_del_bmi_atipico(Double double1) {
+		try {
+			resCateg = b.category(double1);
+		} catch (ArithmeticException ex) {
+			error = true;
+		}
+	}
 
 	@Then("El sistema devuelve {double}")
 	public void el_sistema_devuelve(Double double1) {
 		Assertions.assertEquals(double1, resBMI);
 	}
 
-	
+	@Then("El sistema devuelve la categoria {string}")
+	public void el_sistema_devuelve_la_categoria(String string) {
+		Assertions.assertEquals(string, resCateg);
+	}
 	
 	@Then("El sistema devuelve un error")
 	public void el_sistema_devuelve_un_error() {
