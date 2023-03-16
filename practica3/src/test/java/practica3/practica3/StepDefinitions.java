@@ -10,6 +10,7 @@ public class StepDefinitions {
 	private BMICalcImpl b;
 	private double resBMI;
 	private String resCateg;
+	private String resAbdominal;
 	private boolean error;
 
 	@Before
@@ -17,6 +18,7 @@ public class StepDefinitions {
 		b = null;
 		resBMI = -1;
 		resCateg = null;
+		resAbdominal = null;
 		error = false;
 	}
 
@@ -70,6 +72,42 @@ public class StepDefinitions {
 			error = true;
 		}
 	}
+	
+	@When("Calculo si tiene obesidad abdominal con cintura {double} y genero {string}")
+	public void calculo_si_tiene_obesidad_abdominal_con_cintura_y_genero(Double double1, String string) {
+	    if (b.abdominalObesity(double1, string.charAt(0)) == true) {
+	    	resAbdominal = "T";
+	    }else {
+	    	resAbdominal = "F";
+	    }
+	}
+	
+	@When("Calculo si tiene obesidad abdominal con genero erroneo {string}")
+	public void calculo_si_tiene_obesidad_abdominal_con_genero_erroneo(String string) {
+		try {
+			b.abdominalObesity(100.0, string.charAt(0));
+		} catch (ArithmeticException ex) {
+			error = true;
+		}
+	}
+	
+	@When("Calculo si tiene obesidad abdominal con cintura negativa {double}")
+	public void calculo_si_tiene_obesidad_abdominal_con_cintura_negativa(Double double1) {
+		try {
+			b.abdominalObesity(double1, 'M');
+		} catch (ArithmeticException ex) {
+			error = true;
+		}
+	}
+	
+	@When("Calculo si tiene obesidad abdominal con cintura atipica {double}")
+	public void calculo_si_tiene_obesidad_abdominal_con_cintura_atipica(Double double1) {
+		try {
+			b.abdominalObesity(double1, 'M');
+		} catch (ArithmeticException ex) {
+			error = true;
+		}
+	}
 
 	@Then("El sistema devuelve {double}")
 	public void el_sistema_devuelve(Double double1) {
@@ -79,6 +117,11 @@ public class StepDefinitions {
 	@Then("El sistema devuelve la categoria {string}")
 	public void el_sistema_devuelve_la_categoria(String string) {
 		Assertions.assertEquals(string, resCateg);
+	}
+	
+	@Then("El sistema devuelve que obesidad es {string}")
+	public void el_sistema_devuelve_que_obesidad_es(String string) {
+		Assertions.assertEquals(string, resAbdominal);
 	}
 	
 	@Then("El sistema devuelve un error")
