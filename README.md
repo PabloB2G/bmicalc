@@ -173,3 +173,7 @@ Para conocer si tengo obesidad abdominal
 	Dado Tengo una calculadora de BMI  
 	Cuando Calculo la obesidad abdominal de M y 500 cm  
 	Entonces El sistema devuelve un error  
+
+## Prototipo GUI
+
+![Prototipo](/doc/Prototipo.png)
