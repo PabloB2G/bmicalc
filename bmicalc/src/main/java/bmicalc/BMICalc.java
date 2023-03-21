@@ -1,6 +1,5 @@
 package bmicalc;
 
-
 public interface BMICalc {
 	
 	/**
@@ -36,3 +35,5 @@ public interface BMICalc {
 	 */
 	public boolean abdominalObesity(double waistCircumference, char gender);
 }
+
+
