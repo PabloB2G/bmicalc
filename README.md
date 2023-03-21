@@ -177,3 +177,7 @@ Para conocer si tengo obesidad abdominal
 ## Prototipo GUI
 
 ![Prototipo](/doc/Prototipo.png)
+
+## GUI java
+
+![GUI](/doc/GUI_java.png)
