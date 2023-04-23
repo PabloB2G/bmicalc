@@ -6,6 +6,9 @@ import bmicalc.BMICalc;
 import bmicalc.BMICalcImpl;
 import bmicalc.Adapter;
 import bmicalc.IMCHospital;
+import bmicalc.IMCStats;
+import bmicalc.IMCStatsImpl;
+import bmicalc.Proxy;
 
 public class cliente {
 
@@ -27,6 +30,27 @@ public class cliente {
 		System.out.println();
 
 		///////////////////////////////////////
+		
+		IMCHospital cliente1 = new Proxy(b_adapter);
+		IMCStats stats = new IMCStatsImpl();
+		
+		cliente1.imc(2, 4);
+		
+		System.out.println("AlturaMedia: " + stats.alturaMedia());
+		System.out.println("PesoMedio: " + stats.pesoMedio());
+		System.out.println("IMCMedi: " + stats.imcMedio());
+		System.out.println("NumPacientes: " + stats.numPacientes());
+		System.out.println();
+		
+		IMCHospital cliente2 = new Proxy(b_adapter);
+		
+		cliente2.imc(1, 32);
+		
+		System.out.println("AlturaMedia: " + stats.alturaMedia());
+		System.out.println("PesoMedio: " + stats.pesoMedio());
+		System.out.println("IMCMedi: " + stats.imcMedio());
+		System.out.println("NumPacientes: " + stats.numPacientes());
+		System.out.println();
 	}
 
 }
