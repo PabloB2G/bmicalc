@@ -1,7 +1,21 @@
 package bmicalc;
 
 public class BMICalcImpl implements BMICalc {
-
+	private static BMICalc instance;
+	// Para este hay que cambiar los tests
+	
+	private BMICalcImpl() {
+		
+	}
+	
+	public static BMICalc getInstance( ) {
+		if (instance == null) {
+			instance = new BMICalcImpl();
+		}
+		
+		return instance;
+	}
+	
 	public double bmi(double mass, double height) {
 		if (height == 0) {
 			throw new ArithmeticException();

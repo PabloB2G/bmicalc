@@ -3,14 +3,15 @@ package bmicalc.gui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import bmicalc.BMICalc;
 import bmicalc.BMICalcImpl;
 
 
 public class Controlador implements ActionListener{
-	private BMICalcImpl modelo;
+	private BMICalc modelo;
 	private Vista vista;
 	
-	public Controlador(BMICalcImpl modelo, Vista vista) {
+	public Controlador(BMICalc modelo, Vista vista) {
 		this.modelo = modelo;
 		this.vista = vista;
 	}

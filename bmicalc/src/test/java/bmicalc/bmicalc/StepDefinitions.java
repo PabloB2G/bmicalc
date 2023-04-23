@@ -4,10 +4,12 @@ import io.cucumber.java.Before;
 import io.cucumber.java.en.*;
 
 import org.junit.jupiter.api.Assertions;
+
+import bmicalc.BMICalc;
 import bmicalc.BMICalcImpl;
 
 public class StepDefinitions {
-	private BMICalcImpl b;
+	private BMICalc b;
 	private double resBMI;
 	private String resCateg;
 	private String resAbdominal;
@@ -24,7 +26,7 @@ public class StepDefinitions {
 
 	@Given("Tengo una calculadora de BMI")
 	public void tengo_una_calculadora_de_bmi() {
-		b = new BMICalcImpl();
+		b = BMICalcImpl.getInstance();
 	}
 
 	@When("Calculo el BMI con peso {double} y con altura {double}")
