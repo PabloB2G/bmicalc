@@ -9,17 +9,21 @@ import bmicalc.IMCHospital;
 import bmicalc.IMCStats;
 import bmicalc.IMCStatsImpl;
 import bmicalc.Proxy;
+import bmicalc.CalcSpanish;
+import bmicalc.CalcEnglish;
 
 public class cliente {
 
 	public static void main(String[] args) {
+		/////////////////////////////////////// Singleton
+		
 		BMICalc b = BMICalcImpl.getInstance();
 		System.out.println("Singleton (Masa: 4, Altura: 2): " + b.bmi(4, 2));
 		System.out.println("Singleton (Masa: 4, Altura: 2): " + b.category(b.bmi(4, 2)));
 		System.out.println("Singleton (Circunferencia: 100, Sexo: M): " + b.abdominalObesity(100, 'M'));
 		System.out.println();
 		
-		///////////////////////////////////////
+		/////////////////////////////////////// Adapter
 		
 		IMCHospital b_adapter = new Adapter(b);
 
@@ -29,7 +33,7 @@ public class cliente {
 		System.out.println("Adapter (Sexo: M, Circunferencia: 100): " + obesidad);
 		System.out.println();
 
-		///////////////////////////////////////
+		/////////////////////////////////////// Proxy
 		
 		IMCHospital cliente1 = new Proxy(b_adapter);
 		IMCStats stats = new IMCStatsImpl();
@@ -51,6 +55,21 @@ public class cliente {
 		System.out.println("IMCMedi: " + stats.imcMedio());
 		System.out.println("NumPacientes: " + stats.numPacientes());
 		System.out.println();
+		
+		/////////////////////////////////////// Decorator
+		
+		// Solo se puede hacer spanish o english, no los dos a la vez.
+		// Ya que uno recibe metros y el otro pies
+		boolean english = true;
+		
+		if (english) {
+			b_adapter = new CalcEnglish(b_adapter);
+			b_adapter.imc(2*3.28084f, 4*2.20462f);
+		}else {
+			b_adapter = new CalcSpanish(b_adapter);
+			b_adapter.imc(2, 4);
+		}
+		
 	}
 
 }
