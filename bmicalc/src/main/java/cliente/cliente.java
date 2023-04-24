@@ -58,17 +58,11 @@ public class cliente {
 		
 		/////////////////////////////////////// Decorator
 		
-		// Solo se puede hacer spanish o english, no los dos a la vez.
-		// Ya que uno recibe metros y el otro pies
-		boolean english = true;
+		IMCHospital calc_english = new CalcEnglish(b_adapter);
+		calc_english.imc(2*3.28084f, 4*2.20462f);
 		
-		if (english) {
-			b_adapter = new CalcEnglish(b_adapter);
-			b_adapter.imc(2*3.28084f, 4*2.20462f);
-		}else {
-			b_adapter = new CalcSpanish(b_adapter);
-			b_adapter.imc(2, 4);
-		}
+		IMCHospital calc_spanish = new CalcSpanish(b_adapter);
+		calc_spanish.imc(2, 4);
 		
 	}
 
