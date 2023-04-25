@@ -6,11 +6,12 @@ import io.cucumber.java.en.*;
 import org.junit.jupiter.api.Assertions;
 import bmicalc.BMICalcImpl;
 import bmicalc.Gender;
+import bmicalc.ObesityCategory;
 
 public class StepDefinitions {
 	private BMICalcImpl b;
 	private double resBMI;
-	private String resCateg;
+	private ObesityCategory resCateg;
 	private String resAbdominal;
 	private boolean error;
 
@@ -114,9 +115,25 @@ public class StepDefinitions {
 		Assertions.assertEquals(double1, resBMI);
 	}
 
+	private ObesityCategory metodoEnum(String s) {
+		ObesityCategory c;
+		
+		if (s == "UNDERWEIGHT") {
+			c = ObesityCategory.UNDERWEIGHT;
+		}else if (s == "NORMAL") {
+			c = ObesityCategory.NORMAL;
+		}else if (s == "OVERWEIGHT") {
+			c = ObesityCategory.OVERWEIGHT;
+		}else {
+			c = ObesityCategory.OBESE;
+		}
+		
+		return c;
+	}
+	
 	@Then("El sistema devuelve la categoria {string}")
 	public void el_sistema_devuelve_la_categoria(String string) {
-		Assertions.assertEquals(string, resCateg);
+		Assertions.assertEquals(metodoEnum(string), resCateg);
 	}
 	
 	@Then("El sistema devuelve que obesidad es {string}")

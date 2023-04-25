@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import bmicalc.BMICalcImpl;
 import bmicalc.Gender;
+import bmicalc.ObesityCategory;
 
 
 public class Controlador implements ActionListener{
@@ -37,7 +38,7 @@ public class Controlador implements ActionListener{
 				double peso = vista.getPeso();
 				double altura = vista.getAltura();
 				double bmi = modelo.calculateBodyMassIndex(peso, altura);
-				String res = modelo.getObesityCategory(bmi);
+				ObesityCategory res = modelo.getObesityCategory(bmi);
 				vista.setCategoria(bmi, res);
 			}catch (ArithmeticException ex) {
 				vista.error("El rango de valores del peso y/o la altura no son correctos.");

@@ -18,8 +18,8 @@ public class BMICalcImpl implements CardiovascularMetrics, MetabolicMetrics {
 		return mass / (height*height);
 	}
 
-	public String getObesityCategory(double bmi) {
-		String res;
+	public ObesityCategory getObesityCategory(double bmi) {
+		ObesityCategory res;
 		
 		if (bmi < 0) {
 			throw new ArithmeticException();
@@ -30,13 +30,13 @@ public class BMICalcImpl implements CardiovascularMetrics, MetabolicMetrics {
 		}
 		
 		if (bmi < 18.5) {
-			res = "UNDERWEIGHT";
+			res = ObesityCategory.UNDERWEIGHT;
 		}else if (bmi >= 18.5 && bmi < 25) {
-			res = "NORMAL";
+			res = ObesityCategory.NORMAL;
 		}else if (bmi >= 25 && bmi < 30) {
-			res = "OVERWEIGHT";
+			res = ObesityCategory.OVERWEIGHT;
 		}else {
-			res = "OBESE";
+			res = ObesityCategory.OBESE;
 		}
 		
 		return res;

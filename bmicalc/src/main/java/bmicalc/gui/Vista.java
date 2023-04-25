@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import bmicalc.Gender;
+import bmicalc.ObesityCategory;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
@@ -208,7 +209,7 @@ public class Vista extends JFrame {
 		lblBMI.setText("Su BMI es: " + res);
 	}
 	
-	public void setCategoria(double bmi, String categoria) {
+	public void setCategoria(double bmi, ObesityCategory categoria) {
 		setBMI(bmi);
 		lblCategoria.setText("Pertenece a la categoria: " + categoria);
 	}
