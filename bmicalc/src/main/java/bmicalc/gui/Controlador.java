@@ -24,7 +24,7 @@ public class Controlador implements ActionListener{
 			try {
 				double peso = vista.getPeso();
 				double altura = vista.getAltura();
-				double res = modelo.bmi(peso, altura);
+				double res = modelo.calculateBodyMassIndex(peso, altura);
 				vista.setBMI(res);
 			}catch (ArithmeticException ex) {
 				vista.error("El rango de valores del peso y/o la altura no es correcto.");
@@ -36,8 +36,8 @@ public class Controlador implements ActionListener{
 			try {
 				double peso = vista.getPeso();
 				double altura = vista.getAltura();
-				double bmi = modelo.bmi(peso, altura);
-				String res = modelo.category(bmi);
+				double bmi = modelo.calculateBodyMassIndex(peso, altura);
+				String res = modelo.getObesityCategory(bmi);
 				vista.setCategoria(bmi, res);
 			}catch (ArithmeticException ex) {
 				vista.error("El rango de valores del peso y/o la altura no son correctos.");

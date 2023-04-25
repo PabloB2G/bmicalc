@@ -2,7 +2,7 @@ package bmicalc;
 
 public class BMICalcImpl implements CardiovascularMetrics, MetabolicMetrics {
 
-	public double bmi(double mass, double height) {
+	public double calculateBodyMassIndex(double mass, double height) {
 		if (height == 0) {
 			throw new ArithmeticException();
 		}
@@ -18,7 +18,7 @@ public class BMICalcImpl implements CardiovascularMetrics, MetabolicMetrics {
 		return mass / (height*height);
 	}
 
-	public String category(double bmi) {
+	public String getObesityCategory(double bmi) {
 		String res;
 		
 		if (bmi < 0) {

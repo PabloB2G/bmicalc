@@ -30,13 +30,13 @@ public class StepDefinitions {
 
 	@When("Calculo el BMI con peso {double} y con altura {double}")
 	public void calculo_el_bmi_con_peso_y_con_altura(Double double1, Double double2) {
-		resBMI = b.bmi(double1, double2);
+		resBMI = b.calculateBodyMassIndex(double1, double2);
 	}
 
 	@When("Calculo el BMI con peso {double} y con altura {double} negativos")
 	public void calculo_el_bmi_con_peso_y_con_altura_negativos(Double double1, Double double2) {
 		try {
-			resBMI = b.bmi(double1, double2);
+			resBMI = b.calculateBodyMassIndex(double1, double2);
 		} catch (ArithmeticException ex) {
 			error = true;
 		}
@@ -45,7 +45,7 @@ public class StepDefinitions {
 	@When("Calculo el BMI con peso {double} y con altura {double} atipicos")
 	public void calculo_el_bmi_con_peso_y_con_altura_atipicos(Double double1, Double double2) {
 		try {
-			resBMI = b.bmi(double1, double2);
+			resBMI = b.calculateBodyMassIndex(double1, double2);
 		} catch (ArithmeticException ex) {
 			error = true;
 		}
@@ -53,13 +53,13 @@ public class StepDefinitions {
 	
 	@When("Calculo la categoria de {double}")
 	public void calculo_la_categoria_de(Double double1) {
-		resCateg = b.category(double1);
+		resCateg = b.getObesityCategory(double1);
 	}
 
 	@When("Calculo la categoria del BMI negativo {double}")
 	public void calculo_la_categoria_del_bmi_negativo(Double double1) {
 		try {
-			resCateg = b.category(double1);
+			resCateg = b.getObesityCategory(double1);
 		} catch (ArithmeticException ex) {
 			error = true;
 		}
@@ -68,7 +68,7 @@ public class StepDefinitions {
 	@When("Calculo la categoria del BMI atipico {double}")
 	public void calculo_la_categoria_del_bmi_atipico(Double double1) {
 		try {
-			resCateg = b.category(double1);
+			resCateg = b.getObesityCategory(double1);
 		} catch (ArithmeticException ex) {
 			error = true;
 		}
