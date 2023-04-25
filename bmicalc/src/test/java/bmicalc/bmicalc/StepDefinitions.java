@@ -5,6 +5,7 @@ import io.cucumber.java.en.*;
 
 import org.junit.jupiter.api.Assertions;
 import bmicalc.BMICalcImpl;
+import bmicalc.Gender;
 
 public class StepDefinitions {
 	private BMICalcImpl b;
@@ -73,28 +74,27 @@ public class StepDefinitions {
 		}
 	}
 	
+	
 	@When("Calculo si tiene obesidad abdominal con cintura {double} y genero {string}")
-	public void calculo_si_tiene_obesidad_abdominal_con_cintura_y_genero(Double double1, String string) {
-	    if (b.abdominalObesity(double1, string.charAt(0)) == true) {
+	public void calculo_si_tiene_obesidad_abdominal_con_cintura_y_genero(Double double1, String gender) {
+		boolean res;
+		if (gender == "FEMALE") {
+			res = b.abdominalObesity(double1, Gender.FEMALE);
+		}else {
+			res = b.abdominalObesity(double1, Gender.MALE);
+		}
+		
+	    if (res == true) {
 	    	resAbdominal = "T";
 	    }else {
 	    	resAbdominal = "F";
 	    }
 	}
 	
-	@When("Calculo si tiene obesidad abdominal con genero erroneo {string}")
-	public void calculo_si_tiene_obesidad_abdominal_con_genero_erroneo(String string) {
-		try {
-			b.abdominalObesity(100.0, string.charAt(0));
-		} catch (ArithmeticException ex) {
-			error = true;
-		}
-	}
-	
 	@When("Calculo si tiene obesidad abdominal con cintura negativa {double}")
 	public void calculo_si_tiene_obesidad_abdominal_con_cintura_negativa(Double double1) {
 		try {
-			b.abdominalObesity(double1, 'M');
+			b.abdominalObesity(double1, Gender.MALE);
 		} catch (ArithmeticException ex) {
 			error = true;
 		}
@@ -103,7 +103,7 @@ public class StepDefinitions {
 	@When("Calculo si tiene obesidad abdominal con cintura atipica {double}")
 	public void calculo_si_tiene_obesidad_abdominal_con_cintura_atipica(Double double1) {
 		try {
-			b.abdominalObesity(double1, 'M');
+			b.abdominalObesity(double1, Gender.MALE);
 		} catch (ArithmeticException ex) {
 			error = true;
 		}

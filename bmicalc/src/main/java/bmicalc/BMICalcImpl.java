@@ -42,10 +42,10 @@ public class BMICalcImpl implements CardiovascularMetrics, MetabolicMetrics {
 		return res;
 	}
 
-	public boolean abdominalObesity(double waistCircumference, char gender) {
+	public boolean abdominalObesity(double waistCircumference, Gender gender) {
 		boolean res = false;
 		
-		if (gender != 'M' && gender != 'F') {
+		if (Gender.FEMALE != gender && Gender.MALE != gender) {
 			throw new ArithmeticException();
 		}
 		
@@ -57,13 +57,13 @@ public class BMICalcImpl implements CardiovascularMetrics, MetabolicMetrics {
 			throw new ArithmeticException();
 		}
 		
-		if (gender == 'M') {
+		if (gender == Gender.MALE) {
 			if (waistCircumference > 90) {
 				res = true;
 			}
 		}
 		
-		if (gender == 'F') {
+		if (gender == Gender.FEMALE) {
 			if (waistCircumference > 80) {
 				res = true;
 			}

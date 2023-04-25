@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import bmicalc.BMICalcImpl;
+import bmicalc.Gender;
 
 
 public class Controlador implements ActionListener{
@@ -46,7 +47,7 @@ public class Controlador implements ActionListener{
 		}else if (comando.equals("Obesidad")) {
 			try {
 				double circ = vista.getCircunferencia();
-				char sexo = vista.getSexo();
+				Gender sexo = vista.getSexo();
 				boolean res = modelo.abdominalObesity(circ, sexo);
 				vista.setObesidad(res);
 			}catch (ArithmeticException ex) {

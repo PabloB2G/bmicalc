@@ -4,6 +4,9 @@ package bmicalc.gui;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import bmicalc.Gender;
+
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 
@@ -193,11 +196,11 @@ public class Vista extends JFrame {
 			radioMujer.setSelected(true);
 		}
 	}
-	public char getSexo() {
+	public Gender getSexo() {
 		if (radioHombre.isSelected()) {
-			return 'M';
+			return Gender.MALE;
 		}else {
-			return 'F';
+			return Gender.FEMALE;
 		}
 	}
 	

@@ -109,50 +109,35 @@ public class BMICalcTest {
 	@ParameterizedTest
 	@ValueSource(doubles = {90.001, 91, 98.99, 100, 103.254})
 	public void abdominalMaleTrue(double value) {
-		assertTrue(calc.abdominalObesity(value, 'M'));
+		assertTrue(calc.abdominalObesity(value, Gender.MALE));
 	}
 	
 	@ParameterizedTest
 	@ValueSource(doubles = {35, 40.1, 45.121, 89.999, 90})
 	public void abdominalMaleFalse(double value) {
-		assertFalse(calc.abdominalObesity(value, 'M'));
+		assertFalse(calc.abdominalObesity(value, Gender.MALE));
 	}
 	
 	@ParameterizedTest
 	@ValueSource(doubles = {80.001, 81, 90, 100, 103.254})
 	public void abdominalFemaleTrue(double value) {
-		assertTrue(calc.abdominalObesity(value, 'F'));
+		assertTrue(calc.abdominalObesity(value, Gender.FEMALE));
 	}
 	
 	@ParameterizedTest
 	@ValueSource(doubles = {35, 40.1, 45.121, 79.999, 80})
 	public void abdominalFemaleFalse(double value) {
-		assertFalse(calc.abdominalObesity(value, 'F'));
-	}
-	
-	@Test
-	public void abdominalm() {
-		assertThrows(ArithmeticException.class, () -> calc.abdominalObesity(91, 'm'));
-	}
-	
-	@Test
-	public void abdominalf() {
-		assertThrows(ArithmeticException.class, () -> calc.abdominalObesity(91, 'f'));
-	}
-	
-	@Test
-	public void abdominalDifferent() {
-		assertThrows(ArithmeticException.class, () -> calc.abdominalObesity(91, 'k'));
+		assertFalse(calc.abdominalObesity(value, Gender.FEMALE));
 	}
 	
 	@Test
 	public void abdominalNegative() {
-		assertThrows(ArithmeticException.class, () -> calc.abdominalObesity(-5, 'F'));
+		assertThrows(ArithmeticException.class, () -> calc.abdominalObesity(-5, Gender.FEMALE));
 	}
 	
 	@ParameterizedTest
 	@ValueSource(doubles = {20, 400})
 	public void abdominalOutOfBonds(double value) {
-		assertThrows(ArithmeticException.class, () -> calc.abdominalObesity(value, 'F'));
+		assertThrows(ArithmeticException.class, () -> calc.abdominalObesity(value, Gender.FEMALE));
 	}
 }
