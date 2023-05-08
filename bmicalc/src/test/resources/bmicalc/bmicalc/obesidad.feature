@@ -31,25 +31,13 @@ Para conocer si tengo obesidad abdominal
     
 			Examples:
    | w | g | res |
-   | 100.0 | 'F' | "T" |
-   | 60.0 | 'F' | "F" |
-   | 100.0 | 'M' | "T" |
-   | 60.0 | 'M' | "F" | 
+   | 100.0 | FEMALE | "T" |
+   | 60.0 | FEMALE | "F" |
+   | 100.0 | MALE | "T" |
+   | 60.0 | MALE | "F" | 
 	
-	@tag2
-  Scenario Outline: El genero es incorrecto
-    Given Tengo una calculadora de BMI
-    When Calculo si tiene obesidad abdominal con genero erroneo <g> 
-    Then El sistema devuelve un error
-    
-			Examples:
-   | g |
-   | 'f' | 
-   | 'm' |
-   | 'X' | 
-   | 'x' | 
    
-  @tag3
+  @tag2
   Scenario Outline: La medida de la cintura es negativa
     Given Tengo una calculadora de BMI
     When Calculo si tiene obesidad abdominal con cintura negativa <w>
@@ -60,7 +48,7 @@ Para conocer si tengo obesidad abdominal
    | -10.0 | 
    | -20.0 |
    
-  @tag4
+  @tag3
   Scenario Outline: La medida de la cintura es atipica
     Given Tengo una calculadora de BMI
     When Calculo si tiene obesidad abdominal con cintura atipica <w>

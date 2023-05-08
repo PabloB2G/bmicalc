@@ -1,6 +1,6 @@
 package bmicalc;
 
-public interface BMICalc {
+public interface CardiovascularMetrics {
 	
 	/**
 	 * Calculate the Body Mass Index (BMI) of a person.
@@ -10,7 +10,7 @@ public interface BMICalc {
 	 * @param height Height of the person.
 	 * @return 		 The Body Mass Index (BMI) value.
 	 */
-	public double bmi(double mass, double height);
+	public double calculateBodyMassIndex(double mass, double height);
 	
 	/**
 	 * Categorize a person according to the BMI category:
@@ -22,18 +22,7 @@ public interface BMICalc {
 	 * @param bmi Body Mass Index (BMI) value.
 	 * @return	  String representing the BMI category.
 	 */
-	public String category(double bmi);
-	
-	/**
-	 * Determine whether a person has abdominal obesity.
-	 * A woman has abdominal obesity if her waist circumference is greater than 80 cm.
-	 * A man has abdominal obesity if his waist circumference is greater than 90 cm.
-	 * 
-	 * @param waistCircumference	Waist circumference.
-	 * @param gender				Male ('M') or Female ('F').
-	 * @return						True if the person has abdominal obesity, false otherwise.
-	 */
-	public boolean abdominalObesity(double waistCircumference, char gender);
+	public ObesityCategory getObesityCategory(double bmi);
 }
 
 

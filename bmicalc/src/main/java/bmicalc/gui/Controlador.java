@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import bmicalc.BMICalcImpl;
+import bmicalc.Gender;
+import bmicalc.ObesityCategory;
 
 
 public class Controlador implements ActionListener{
@@ -23,7 +25,7 @@ public class Controlador implements ActionListener{
 			try {
 				double peso = vista.getPeso();
 				double altura = vista.getAltura();
-				double res = modelo.bmi(peso, altura);
+				double res = modelo.calculateBodyMassIndex(peso, altura);
 				vista.setBMI(res);
 			}catch (ArithmeticException ex) {
 				vista.error("El rango de valores del peso y/o la altura no es correcto.");
@@ -35,8 +37,8 @@ public class Controlador implements ActionListener{
 			try {
 				double peso = vista.getPeso();
 				double altura = vista.getAltura();
-				double bmi = modelo.bmi(peso, altura);
-				String res = modelo.category(bmi);
+				double bmi = modelo.calculateBodyMassIndex(peso, altura);
+				ObesityCategory res = modelo.getObesityCategory(bmi);
 				vista.setCategoria(bmi, res);
 			}catch (ArithmeticException ex) {
 				vista.error("El rango de valores del peso y/o la altura no son correctos.");
@@ -46,7 +48,7 @@ public class Controlador implements ActionListener{
 		}else if (comando.equals("Obesidad")) {
 			try {
 				double circ = vista.getCircunferencia();
-				char sexo = vista.getSexo();
+				Gender sexo = vista.getSexo();
 				boolean res = modelo.abdominalObesity(circ, sexo);
 				vista.setObesidad(res);
 			}catch (ArithmeticException ex) {
