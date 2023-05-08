@@ -31,10 +31,10 @@ Para conocer si tengo obesidad abdominal
     
 			Examples:
    | w | g | res |
-   | 100.0 | FEMALE | "T" |
-   | 60.0 | FEMALE | "F" |
-   | 100.0 | MALE | "T" |
-   | 60.0 | MALE | "F" | 
+   | 100.0 | "FEMALE" | "T" |
+   | 60.0 | "FEMALE" | "F" |
+   | 100.0 | "MALE" | "T" |
+   | 60.0 | "MALE" | "F" | 
 	
    
   @tag2

@@ -118,11 +118,11 @@ public class StepDefinitions {
 	private ObesityCategory metodoEnum(String s) {
 		ObesityCategory c;
 		
-		if (s == "UNDERWEIGHT") {
+		if (s.equals("UNDERWEIGHT")) {
 			c = ObesityCategory.UNDERWEIGHT;
-		}else if (s == "NORMAL") {
+		}else if (s.equals("NORMAL")) {
 			c = ObesityCategory.NORMAL;
-		}else if (s == "OVERWEIGHT") {
+		}else if (s.equals("OVERWEIGHT")) {
 			c = ObesityCategory.OVERWEIGHT;
 		}else {
 			c = ObesityCategory.OBESE;
